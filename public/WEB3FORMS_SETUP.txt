@@ -1,0 +1,20 @@
+球通BC 応募フォームの接続手順（Ver.54）
+
+1. https://web3forms.com/ を開く
+2. 受信先メールアドレスとして kyutsubb2024@gmail.com を登録
+3. 届いたメールのリンクで受信先を承認し、Access Key を取得
+4. Render > Web Service > Environment で変数を追加
+   Key:   WEB3FORMS_ACCESS_KEY
+   Value: (Web3Formsで発行されたAccess Key)
+5. Renderで環境変数を保存し、再デプロイ／再起動する
+6. https://kyutsu-baseball-club.onrender.com/api/form-config を開き、
+   accessKey が空でないことを確認（このキーはWeb3Formsの公開前提の識別子です）
+7. 応募フォームでテスト送信。成功表示とGmailへの受信を両方確認してください。
+
+注意:
+* Gmailの2段階認証・アプリパスワードは不要です。
+* Web3Formsはブラウザから直接送信します。Renderサーバー経由では送信しません。
+* Googleのパスワードなどのログイン情報は入力しないでください。
+* 以前のGMAIL_APP_PASSWORD設定は不要です。不要な秘密情報はRenderから削除してください。
+* 応募内容はWeb3Forms経由で送信されるため、利用規約・プライバシーポリシーを確認してください。
+* メール到着前に正常稼働と判断しないでください。

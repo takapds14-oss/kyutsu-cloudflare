@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061326">
+<title>GAME RESULTS — KYUTSU BASEBALL CLUB</title><meta name="description" content="KYUTSU BASEBALL CLUBの公式戦・オープン戦の試合結果アーカイブ。">
+<link rel="canonical" href="https://kyutsu-baseball-club.onrender.com/results.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KYUTSU BASEBALL CLUB">
+<meta property="og:title" content="GAME RESULTS — KYUTSU BASEBALL CLUB">
+<meta property="og:description" content="KYUTSU BASEBALL CLUBの公式戦・オープン戦の試合結果アーカイブ。">
+<meta property="og:url" content="https://kyutsu-baseball-club.onrender.com/results.html">
+<meta property="og:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GAME RESULTS — KYUTSU BASEBALL CLUB">
+<meta name="twitter:description" content="KYUTSU BASEBALL CLUBの公式戦・オープン戦の試合結果アーカイブ。">
+<meta name="twitter:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=55">
+<style>
+.resultsArchive{min-height:100vh;background:#061326;padding:124px 6vw 130px}
+.resultsHero{display:grid;grid-template-columns:1.08fr .92fr;gap:7vw;align-items:end;padding-bottom:58px;border-bottom:1px solid rgba(255,255,255,.16)}
+.resultsHero h1{font-size:clamp(68px,10vw,148px);font-weight:500;line-height:.82;letter-spacing:-.045em;margin:25px 0 0}
+.resultsHeroCopy{padding-bottom:8px}
+.resultsHeroCopy p{font-size:13px;line-height:2.05;letter-spacing:.07em;color:#98a6b8;margin:0}
+
+.seasonBar{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:end;padding:48px 0 28px}
+.seasonStats{display:grid;grid-template-columns:repeat(5,minmax(90px,1fr));max-width:760px}
+.stat{border-right:1px solid rgba(255,255,255,.13);padding:0 24px}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0}
+.stat span{display:block;font-size:8px;letter-spacing:.22em;color:#718096;margin-bottom:10px}
+.stat strong{display:block;font-size:clamp(26px,3vw,44px);font-weight:500;line-height:1}
+.seasonTabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.seasonBtn,.resultFilter{appearance:none;border:1px solid rgba(255,255,255,.18);background:transparent;color:#8f9caf;padding:11px 14px;font:inherit;font-size:9px;letter-spacing:.17em;cursor:pointer}
+.seasonBtn.active,.resultFilter.active{background:#fff;color:#061326;border-color:#fff}
+
+.filterRow{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0 34px;border-top:1px solid rgba(255,255,255,.08)}
+.resultFilters{display:flex;gap:8px;flex-wrap:wrap}
+.archiveCount{font-size:9px;letter-spacing:.2em;color:#718096}
+
+.resultsList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.archiveCard{position:relative;min-height:330px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(145deg,#0a285b 0%,#071b41 58%,#06142f 100%);display:flex;flex-direction:column;overflow:hidden}
+.archiveCard:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.03),transparent 52%);pointer-events:none}
+.archiveTop{position:relative;z-index:1;display:flex;justify-content:space-between;gap:20px;padding:22px 24px 14px;font-size:9px;letter-spacing:.18em;color:#92a1b6}
+.archiveTop b{font-weight:500;color:#e5e9ef}
+.archiveTournament{position:relative;z-index:1;min-height:38px;padding:4px 24px 14px;text-align:center;font-size:11px;letter-spacing:.16em;color:#bcc5d1}
+.archiveScore{position:relative;z-index:1;display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;gap:14px;padding:12px 24px 20px;flex:1}
+.archiveClub{display:grid;grid-template-columns:54px 1fr;grid-template-rows:auto 1fr;column-gap:14px;align-items:center}
+.archiveClub.opponent{text-align:right;grid-template-columns:1fr 54px}
+.archiveMark{width:54px;height:54px;display:grid;place-items:center}
+.archiveMark img{max-width:100%;max-height:100%;object-fit:contain}
+.archiveOpponentMark{width:54px;height:54px;border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;font-size:20px;font-weight:600;color:#d9e0e9;background:rgba(255,255,255,.025)}
+.archiveOpponentMark img{width:100%;height:100%;object-fit:contain;padding:5px}
+.archiveClub small{font-size:12px;letter-spacing:.1em;color:#d4dbe4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.archiveClub.opponent small{grid-column:1;grid-row:1}
+.archiveClub.opponent .archiveOpponentMark{grid-column:2;grid-row:1/3}
+.archiveClub strong{font-size:clamp(70px,8vw,118px);font-weight:400;line-height:.82;letter-spacing:-.055em}
+.archiveClub.opponent strong{grid-column:1;grid-row:2}
+.archiveDash{height:1px;background:rgba(255,255,255,.28);width:100%}
+.archiveBottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.13);padding:17px 24px}
+.archiveBottom b{font-size:13px;letter-spacing:.28em;font-weight:600}
+.archiveBottom b.win{color:#7be0a7}.archiveBottom b.lose{color:#ff7f87}.archiveBottom b.draw{color:#d1d7df}
+.archiveBottom span{font-size:8px;letter-spacing:.18em;color:#76859a}
+.emptyResults{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding:55px 0;color:#78879a;font-size:10px;letter-spacing:.2em}
+
+@media(max-width:900px){.resultsList{grid-template-columns:1fr}}
+@media(max-width:720px){
+ .resultsArchive{padding:100px 4.5vw 90px}
+ .resultsHero{grid-template-columns:1fr;gap:38px;padding-bottom:46px}
+ .resultsHero h1{font-size:18vw;margin:20px 0 0}
+ .resultsHeroCopy p{font-size:12px}
+ .seasonBar{grid-template-columns:1fr;padding:38px 0 24px}
+ .seasonStats{grid-template-columns:repeat(5,1fr);width:100%}
+ .stat{padding:0 10px}
+ .stat span{font-size:6px;letter-spacing:.12em}.stat strong{font-size:7vw}
+ .seasonTabs{justify-content:flex-start}
+ .filterRow{align-items:flex-start;flex-direction:column;padding-bottom:28px}
+ .resultsList{gap:12px}
+ .archiveCard{min-height:290px}
+ .archiveTop{padding:18px 17px 12px;font-size:8px}
+ .archiveTournament{padding:3px 17px 10px;font-size:10px}
+ .archiveScore{grid-template-columns:1fr 28px 1fr;gap:8px;padding:10px 17px 17px}
+ .archiveClub{grid-template-columns:42px 1fr;column-gap:8px}
+ .archiveClub.opponent{grid-template-columns:1fr 42px}
+ .archiveMark,.archiveOpponentMark{width:42px;height:42px}
+ .archiveClub small{font-size:10px}
+ .archiveClub strong{font-size:18vw}
+ .archiveBottom{padding:15px 17px}.archiveBottom b{font-size:12px}.archiveBottom span{font-size:7px}
+}
+
+/* v47 — consistent light editorial section titles */
+.resultsHero h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-weight:300!important}
+
+/* v48 — stable two-team alignment: identity row, equal score row */
+.archiveScore{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);gap:12px;align-items:stretch}
+.archiveClub,.archiveClub.opponent{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:66px minmax(90px,1fr);align-items:stretch;min-width:0;text-align:center}
+.archiveIdentity{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:13px;min-width:0;width:100%}
+.archiveClub.opponent .archiveIdentity{flex-direction:row}
+.archiveIdentity .archiveMark,.archiveIdentity .archiveOpponentMark{flex:none;grid-column:auto;grid-row:auto;width:54px;height:54px}
+.archiveIdentity small,.archiveClub.opponent .archiveIdentity small{display:block;grid-column:auto;grid-row:auto;white-space:normal;overflow-wrap:anywhere;line-height:1.45;font-size:12px;text-align:center;min-width:0}
+.archiveClub strong,.archiveClub.opponent strong{display:flex;grid-column:1;grid-row:2;align-items:center;justify-content:center;text-align:center;font-size:clamp(70px,8vw,118px);line-height:1;letter-spacing:0;font-variant-numeric:tabular-nums}
+.archiveDash{align-self:center;width:100%;height:2px}
+@media(max-width:720px){
+  .archiveScore{grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:6px;padding:10px 12px 18px}
+  .archiveClub,.archiveClub.opponent{grid-template-columns:minmax(0,1fr);grid-template-rows:66px minmax(84px,1fr)}
+  .archiveIdentity{gap:6px}
+  .archiveIdentity .archiveMark,.archiveIdentity .archiveOpponentMark{width:36px;height:36px}
+  .archiveIdentity small,.archiveClub.opponent .archiveIdentity small{font-size:9px;letter-spacing:0;line-height:1.4}
+  .archiveClub strong,.archiveClub.opponent strong{font-size:clamp(64px,17vw,100px)}
+}
+
+/* v49 — same centered stack on both sides */
+.archiveScore.kyutsuStackScore{display:grid!important;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr)!important;align-items:stretch!important;gap:8px!important}
+.archiveScore.kyutsuStackScore .archiveClub{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:96px 1fr!important;align-items:start!important;justify-items:center!important;text-align:center!important;min-width:0!important;gap:16px!important}
+.archiveScore.kyutsuStackScore .archiveIdentity{grid-column:1!important;grid-row:1!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;min-width:0!important;width:100%!important}
+.archiveScore.kyutsuStackScore .archiveMark,.archiveScore.kyutsuStackScore .archiveOpponentMark{width:52px!important;height:52px!important;display:grid!important;place-items:center!important;flex:none!important;margin:0!important}
+.archiveScore.kyutsuStackScore .archiveMark img,.archiveScore.kyutsuStackScore .archiveOpponentMark img{max-width:100%!important;max-height:100%!important;object-fit:contain!important}
+.archiveScore.kyutsuStackScore .archiveIdentity small{display:block!important;grid-column:auto!important;grid-row:auto!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.25!important;margin:0!important;max-width:100%!important;font-size:clamp(11px,1.2vw,16px)!important}
+.archiveScore.kyutsuStackScore .archiveClub strong{grid-column:1!important;grid-row:2!important;display:block!important;align-self:start!important;width:100%!important;text-align:center!important;font-variant-numeric:tabular-nums!important;line-height:1!important;transform:none!important;margin:0!important}
+.archiveScore.kyutsuStackScore .archiveDash{align-self:end!important;justify-self:center!important;width:28px!important;margin:0 0 44px!important;transform:none!important}
+@media(max-width:720px){
+ .archiveScore.kyutsuStackScore{grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr)!important;gap:4px!important}
+ .archiveScore.kyutsuStackScore .archiveClub{grid-template-rows:100px 1fr!important;gap:10px!important}
+ .archiveScore.kyutsuStackScore .archiveMark,.archiveScore.kyutsuStackScore .archiveOpponentMark{width:42px!important;height:42px!important}
+ .archiveScore.kyutsuStackScore .archiveIdentity small{font-size:12px!important}
+ .archiveScore.kyutsuStackScore .archiveDash{width:22px!important;margin-bottom:30px!important}
+}
+/* v51: preserve horizontal divider despite previous CSS declarations */
+.archiveScore.kyutsuStackScore > .archiveDash{
+ display:block!important;width:28px!important;height:2px!important;min-height:2px!important;max-height:2px!important;
+ border:0!important;padding:0!important;background:rgba(210,222,239,.52)!important;
+ align-self:end!important;justify-self:center!important;margin:0 0 44px!important;transform:none!important;
+}
+@media(max-width:720px){.archiveScore.kyutsuStackScore > .archiveDash{width:22px!important;margin-bottom:30px!important}}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="index.html" aria-label="KYUTSU home"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a>
+  <a href="index.html#game" style="color:#fff;text-decoration:none;font-size:9px;letter-spacing:.25em">← BACK TO HOME</a>
+</header>
+
+<main class="resultsArchive">
+  <section class="resultsHero">
+    <div>
+      <p class="eyebrow">KYUTSU BASEBALL CLUB / GAME ARCHIVE</p>
+      <h1>GAME<br>RESULTS.</h1>
+    </div>
+    <div class="resultsHeroCopy">
+      <p>公式戦・オープン戦を含む試合結果をアーカイブ。スコア、対戦相手、大会名をシーズンごとに確認できます。</p>
+    </div>
+  </section>
+
+  <section class="seasonBar">
+    <div class="seasonStats" id="seasonStats">
+      <div class="stat"><span>GAMES</span><strong>—</strong></div>
+      <div class="stat"><span>WIN</span><strong>—</strong></div>
+      <div class="stat"><span>LOSE</span><strong>—</strong></div>
+      <div class="stat"><span>DRAW</span><strong>—</strong></div>
+      <div class="stat"><span>WIN %</span><strong>—</strong></div>
+    </div>
+    <div class="seasonTabs" id="seasonTabs"></div>
+  </section>
+
+  <section class="filterRow">
+    <div class="resultFilters">
+      <button class="resultFilter active" data-filter="ALL">ALL</button>
+      <button class="resultFilter" data-filter="WIN">WIN</button>
+      <button class="resultFilter" data-filter="LOSE">LOSE</button>
+      <button class="resultFilter" data-filter="DRAW">DRAW</button>
+    </div>
+    <div class="archiveCount" id="archiveCount">LOADING...</div>
+  </section>
+
+  <section class="resultsList" id="allResults">
+    <div class="emptyResults">LOADING RESULTS...</div>
+  </section>
+</main>
+
+<footer><a class="mark" href="index.html" aria-label="KYUTSU home"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a><p>KYUTSU BASEBALL CLUB<br>TOKYO — EST. 2016</p><p>© 2026 KYUTSU BASEBALL CLUB</p></footer>
+<script src="results.js?v=55"></script>
+</body>
+</html>

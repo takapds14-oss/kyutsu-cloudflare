@@ -1,0 +1,6 @@
+相手チームロゴ登録
+1. 画像を assets/opponents/ に保存 (例: aoyama.png)
+2. GitHubへ assets/opponents/aoyama.png をアップロード・Renderへ反映
+3. GAME RESULTSスプレッドシートの opponent_logo に assets/opponents/aoyama.png を入力
+4. 既存の公開https://画像URLも引き続き使用できます。
+※新しい画像のアップロードは自動ではなくGitHubへの追加が必要です。

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061326">
+<title>PHOTO ARCHIVE — KYUTSU BASEBALL CLUB</title><meta name="description" content="KYUTSU BASEBALL CLUBの試合・活動フォトアーカイブ。">
+<link rel="canonical" href="https://kyutsu-baseball-club.onrender.com/gallery-detail.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KYUTSU BASEBALL CLUB">
+<meta property="og:title" content="PHOTO ARCHIVE — KYUTSU BASEBALL CLUB">
+<meta property="og:description" content="KYUTSU BASEBALL CLUBの試合・活動フォトアーカイブ。">
+<meta property="og:url" content="https://kyutsu-baseball-club.onrender.com/gallery-detail.html">
+<meta property="og:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PHOTO ARCHIVE — KYUTSU BASEBALL CLUB">
+<meta name="twitter:description" content="KYUTSU BASEBALL CLUBの試合・活動フォトアーカイブ。">
+<meta name="twitter:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=55">
+<style>
+.albumPage{min-height:100vh;padding:118px 5vw 130px;background:#061326}
+.albumHero{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:34px;margin-bottom:48px}
+.albumHero h1{font-size:clamp(60px,9vw,132px);font-weight:500;line-height:.84;letter-spacing:-.04em;margin:22px 0 0}
+.albumHeroMeta{text-align:right;color:#8e9caf;font-size:10px;line-height:2;letter-spacing:.2em}
+.photoGrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.photoGrid figure{margin:0;overflow:hidden;background:#0a1a35}
+.photoGrid figure:nth-child(6n+1){grid-column:span 7}
+.photoGrid figure:nth-child(6n+2){grid-column:span 5}
+.photoGrid figure:nth-child(6n+3){grid-column:span 4}
+.photoGrid figure:nth-child(6n+4){grid-column:span 8}
+.photoGrid figure:nth-child(6n+5){grid-column:span 6}
+.photoGrid figure:nth-child(6n+6){grid-column:span 6}
+.photoGrid img{width:100%;height:100%;min-height:300px;aspect-ratio:3/2;object-fit:cover;display:block;transition:transform .45s ease}
+.photoGrid figure:hover img{transform:scale(1.018)}
+.albumBack{display:inline-flex;justify-content:space-between;gap:28px;min-width:210px;margin-top:46px;padding:17px 18px;border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;font-size:10px;letter-spacing:.2em}
+.notFound{padding:80px 0;font-size:14px;letter-spacing:.15em;color:#91a0b4}
+@media(max-width:720px){
+ .albumPage{padding:98px 4.5vw 90px}
+ .albumHero{display:block;margin-bottom:30px;padding-bottom:24px}
+ .albumHero h1{font-size:17vw;margin-top:18px}
+ .albumHeroMeta{text-align:left;margin-top:22px}
+ .photoGrid{grid-template-columns:1fr;gap:10px}
+ .photoGrid figure:nth-child(n){grid-column:1!important}
+ .photoGrid img{min-height:0;aspect-ratio:3/2}
+}
+
+/* v47 — consistent light editorial section titles */
+.albumHero h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-weight:300!important}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="index.html"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a>
+  <a href="gallery.html" style="color:#fff;text-decoration:none;font-size:9px;letter-spacing:.25em">← GALLERY</a>
+</header>
+<main class="albumPage">
+  <div id="albumContent"></div>
+</main>
+<footer><a class="mark" href="index.html"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a><p>KYUTSU BASEBALL CLUB<br>TOKYO — EST. 2016</p><p>© 2026 KYUTSU BASEBALL CLUB</p></footer>
+<script src="gallery-data.js?v=55"></script>
+<script>
+const slug=new URLSearchParams(location.search).get('album');
+const album=(window.KYUTSU_GALLERY_ALBUMS||[]).find(a=>a.slug===slug);
+const root=document.querySelector('#albumContent');
+if(!album){
+  root.innerHTML='<div class="notFound">ALBUM NOT FOUND.</div><a class="albumBack" href="gallery.html"><span>BACK TO GALLERY</span><span>←</span></a>';
+}else{
+  document.title=`${album.date} — KYUTSU GALLERY`;
+  root.innerHTML=`
+    <div class="albumHero">
+      <div><p class="eyebrow">${album.label || 'GAME DAY'} / ${album.location || 'TOKYO'}</p><h1>${album.date}</h1></div>
+      <div class="albumHeroMeta">${String((album.photos||[]).length).padStart(2,'0')} PHOTOS<br>KYUTSU BASEBALL CLUB</div>
+    </div>
+    <div class="photoGrid">${(album.photos||[]).map((src,i)=>`<figure><img src="${src}" alt="KYUTSU ${album.date} ${String(i+1).padStart(2,'0')}" loading="lazy"></figure>`).join('')}</div>
+    <a class="albumBack" href="gallery.html"><span>BACK TO GALLERY</span><span>←</span></a>`;
+}
+</script>
+</body>
+</html>

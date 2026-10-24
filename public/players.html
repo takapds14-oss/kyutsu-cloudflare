@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061326">
+<title>PLAYER PROFILE — KYUTSU BASEBALL CLUB</title><meta name="description" content="KYUTSU BASEBALL CLUBの選手・スタッフを紹介します。">
+<link rel="canonical" href="https://kyutsu-baseball-club.onrender.com/players.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KYUTSU BASEBALL CLUB">
+<meta property="og:title" content="PLAYER PROFILE — KYUTSU BASEBALL CLUB">
+<meta property="og:description" content="KYUTSU BASEBALL CLUBの選手・スタッフを紹介します。">
+<meta property="og:url" content="https://kyutsu-baseball-club.onrender.com/players.html">
+<meta property="og:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PLAYER PROFILE — KYUTSU BASEBALL CLUB">
+<meta name="twitter:description" content="KYUTSU BASEBALL CLUBの選手・スタッフを紹介します。">
+<meta name="twitter:image" content="https://kyutsu-baseball-club.onrender.com/assets/ogp.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=55">
+<style>
+.roster{min-height:100vh;padding:132px 5vw 140px;background:#061326}
+.rosterTop{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:34px;margin-bottom:85px}
+.rosterTop h1{font-size:clamp(68px,10vw,148px);font-weight:500;line-height:.82;letter-spacing:-.045em;margin:28px 0 0}
+.rosterIntro{max-width:520px;color:#94a2b7;font-size:12px;line-height:2;letter-spacing:.1em;margin:0 0 7px}
+.back{color:#c8d0db;text-decoration:none;font-size:9px;letter-spacing:.28em}
+.positionGroup{margin-top:110px}
+.positionHead{display:grid;grid-template-columns:72px 1fr auto;align-items:end;border-top:1px solid rgba(255,255,255,.18);padding:22px 0 28px}
+.positionHead span,.positionHead b{font-size:9px;letter-spacing:.27em;color:#78879b;font-weight:500}
+.positionHead h2{font-size:clamp(38px,5.4vw,78px);line-height:.9;letter-spacing:-.025em;font-weight:500;margin:0}
+.profileGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.profileCard{min-width:0}
+.profileVisual{aspect-ratio:3/4;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,#102848 0%,#08172e 50%,#041125 100%);isolation:isolate}
+.profileVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,12,27,.03),rgba(2,12,27,.08) 55%,rgba(2,12,27,.62));z-index:2;pointer-events:none}
+.profileVisual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;position:relative;z-index:1}
+.profileGhostNo{position:absolute;right:-.04em;bottom:.03em;z-index:0;font-size:clamp(140px,20vw,290px);font-weight:700;line-height:.75;letter-spacing:-.1em;color:rgba(138,156,181,.13)}
+.profileVerticalName{position:absolute;right:-.15em;top:.08em;z-index:0;writing-mode:vertical-rl;font-size:clamp(62px,8vw,118px);font-weight:700;line-height:.78;letter-spacing:-.05em;color:rgba(138,156,181,.12)}
+.profileName{position:absolute;left:24px;bottom:27px;z-index:3;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:15px;align-items:center}
+.profileName strong{grid-column:1/3;font-size:clamp(24px,3vw,42px);font-weight:500;letter-spacing:.15em;line-height:1}
+.profileName i{width:72px;border-top:1px solid rgba(255,255,255,.78);margin-top:13px}
+.profileName span{font-size:9px;letter-spacing:.35em;color:#d5dbe4;margin-top:13px}
+.profileNumber{position:absolute;right:18px;bottom:12px;z-index:3;font-size:clamp(70px,9vw,132px);font-weight:700;line-height:.8;letter-spacing:-.08em;color:#e8ebef;text-shadow:0 3px 12px rgba(0,0,0,.25)}
+.profileFallback{display:none;position:absolute;inset:0;z-index:1;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.profileFallback b{font-size:34px;letter-spacing:.18em}.profileFallback span{font-size:90px;font-weight:700;opacity:.12;margin-top:20px}
+.profileVisual.noPhoto .profileFallback{display:flex}
+.profileExtra{min-height:56px;padding:15px 3px 0;color:#7f8da0}
+.profileThrows{display:block;font-size:9px;letter-spacing:.22em}
+.profileComment{font-size:11px;line-height:1.75;letter-spacing:.07em;margin:10px 0 0;color:#aeb8c6}
+.emptyRoster{padding:50px 0;letter-spacing:.25em;color:#7d8ba0}
+@media(max-width:980px){.profileGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+ .roster{padding:102px 4.5vw 90px}
+ .rosterTop{display:block;margin-bottom:56px;padding-bottom:24px}
+ .rosterTop h1{font-size:17vw;margin:22px 0 28px}.rosterIntro{font-size:11px}
+ .positionGroup{margin-top:74px}
+ .positionHead{grid-template-columns:45px 1fr;gap:0;padding:17px 0 20px}
+ .positionHead h2{font-size:10.5vw}.positionHead b{display:none}
+ .profileGrid{grid-template-columns:1fr;gap:38px}
+ .profileVisual{aspect-ratio:3/4}
+ .profileName{left:20px;bottom:23px}.profileNumber{right:16px}
+}
+
+.profileCardArtwork{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  z-index:10!important;
+  display:block!important;
+}
+.profileGenerated{
+  position:absolute;
+  inset:0;
+  display:none;
+  overflow:hidden;
+  background:radial-gradient(circle at 50% 35%,#102848 0%,#08172e 50%,#041125 100%);
+}
+.profileVisual.useGenerated .profileGenerated{display:block}
+.profileGenerated:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(2,12,27,.03),rgba(2,12,27,.08) 55%,rgba(2,12,27,.62));
+  z-index:2;
+  pointer-events:none;
+}
+.profilePlayerPhoto{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center top;
+  position:relative;
+  z-index:1;
+}
+.profileGenerated.noPhoto .profileFallback{display:flex}
+
+
+/* v47 — consistent light editorial section titles */
+.rosterTop h1,.positionHead h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-weight:300!important}
+@media(max-width:720px){.rosterTop h1{font-size:clamp(48px,14.6vw,85px)!important;line-height:.98!important}.positionHead h2{font-size:clamp(32px,9vw,52px)!important}}
+</style>
+</head>
+<body>
+<header><a class="mark" href="index.html"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a><a class="back" href="index.html">← BACK TO HOME</a></header>
+<main class="roster">
+  <div class="rosterTop">
+    <div><p class="eyebrow">KYUTSU BASEBALL CLUB / 2026</p><h1>PLAYER<br>PROFILE.</h1></div>
+    <p class="rosterIntro">ポジションごとに、KYUTSUをつくる選手たちを紹介します。</p>
+  </div>
+  <div id="playerGroups"></div>
+</main>
+<footer><a class="mark" href="index.html"><img src="assets/kyutsu-logo.png" alt="KYUTSU"></a><p>KYUTSU BASEBALL CLUB<br>TOKYO — EST. 2016</p><p>© 2026 KYUTSU BASEBALL CLUB</p></footer>
+<script src="players-data.js?v=37"></script><script src="players.js?v=55"></script>
+</body></html>

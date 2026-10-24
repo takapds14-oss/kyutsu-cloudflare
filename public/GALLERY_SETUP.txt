@@ -1,0 +1,17 @@
+GALLERY更新方法
+
+1. 写真を assets/ に追加
+   例:
+   assets/game-2026-10-04-01.jpg
+   assets/game-2026-10-04-02.jpg
+
+2. gallery-data.js にアルバムを1件追加
+   date: 表示日付
+   slug: URL用の日付
+   label: GAME DAY / PRACTICE / CAMP など
+   location: TOKYO など
+   cover: 一覧で使う代表写真
+   photos: その日の写真一覧
+
+3. gallery.html / gallery-detail.html は触らなくてOK
+   データ追加だけで日付一覧と詳細ページの両方に反映されます。
