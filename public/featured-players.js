@@ -1,10 +1,11 @@
-// Three featured players. Match existing spreadsheet records by surname,
+// Four featured players. Match existing spreadsheet records by surname,
 // not jersey number, so changing numbers does not break the selection.
 const featuredRoot=document.getElementById('featuredPlayers');
 const featuredNames=[
  {name:'武井',aliases:['武井','たけい','タケイ','TAKEI']},
  {name:'吉村',aliases:['吉村','よしむら','ヨシムラ','YOSHIMURA']},
- {name:'加藤',aliases:['加藤','かとう','カトウ','KATO','KATOU']}
+ {name:'加藤',aliases:['加藤','かとう','カトウ','KATO','KATOU']},
+ {name:'藤本',aliases:['藤本','ふじもと','フジモト','FUJIMOTO']}
 ];
 const safeFeatured=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
 const normFeatured=s=>String(s??'').normalize('NFKC').replace(/[\s　・._-]/g,'').toLowerCase();
