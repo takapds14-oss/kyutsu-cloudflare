@@ -1,0 +1,1 @@
+KYUTSU Ver.61 change-only upload. Upload public/ to repository ROOT (not inside existing public/). PC detail headings aligned to TOP font weight 500. PLAYER PROFILE intro moved to players.html. Mobile layout remains stacked. Previous player art unchanged.

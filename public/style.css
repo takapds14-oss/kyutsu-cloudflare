@@ -952,3 +952,15 @@ html,body{max-width:100%;overflow-x:hidden}
   .playersTeaser { grid-template-columns:minmax(0,1fr) minmax(340px,1fr);column-gap:2vw; }
   .playersTeaserCopy p { font-size:13px!important;letter-spacing:.03em!important; }
 }
+
+/* Ver.61 — remove home-profile description without disturbing mobile featured cards */
+@media (min-width:721px) {
+  .playersTeaser{grid-template-rows:auto auto auto;row-gap:22px;}
+  .playersTeaser > .featuredPlayers{grid-column:1/-1;grid-row:2;}
+  .playersTeaser > .playersTeaserMore{grid-column:1/-1;grid-row:3;}
+}
+@media (max-width:720px) {
+  .playersTeaser{display:flex!important;flex-direction:column;align-items:stretch;gap:35px;}
+  .playersTeaser > .featuredPlayers{width:100%;margin:0;}
+  .playersTeaser > .playersTeaserMore{align-self:flex-start;margin-top:0;}
+}
