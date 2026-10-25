@@ -1,2 +1,1 @@
-KYUTSU SITE VERSION 58
-Featured players: 武井・吉村・加藤 on the homepage. Cloudflare Pages compatible.
+KYUTSU WEBSITE V60 — player card artwork imported (20 players); base V59.
