@@ -1,2 +1,1 @@
-KYUTSU SITE VERSION 59
-Desktop PLAYER PROFILE spacing, single-line caption and consistent action links.
+KYUTSU WEBSITE V60 — player card artwork imported (20 players); base V59.
