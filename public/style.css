@@ -893,3 +893,62 @@ html,body{max-width:100%;overflow-x:hidden}
 }
 
 .featuredFallback[hidden]{display:none!important}
+
+
+/* Ver.59 — homepage desktop typography / roster layout alignment.
+   Keep mobile breakpoints and PURPOSE unchanged. */
+@media (min-width: 721px) {
+  .playersTeaser {
+    grid-template-columns: minmax(0, 1fr) minmax(390px, .85fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 3vw;
+    row-gap: 22px;
+    align-items: start;
+  }
+  .playersTeaser > :first-child { grid-column:1; grid-row:1; }
+  .playersTeaser > .playersTeaserCopy {
+    grid-column:2; grid-row:1;
+    align-self:center;
+    min-width:0;
+  }
+  .playersTeaserCopy p {
+    max-width:none;
+    font-size:clamp(14px, 1.15vw, 18px)!important;
+    letter-spacing:.07em!important;
+    white-space:nowrap;
+  }
+  .playersTeaser .featuredPlayers {
+    grid-column:1/-1;
+    grid-row:2;
+    margin:8px 0 0;
+  }
+  .playersTeaser > .playersTeaserMore {
+    grid-column:1/-1;
+    grid-row:3;
+    margin-top:6px;
+  }
+  /* One consistent style for action links on the landing page. */
+  .resultsSection .sectionIntro > a,
+  .playersTeaser > .playersTeaserMore,
+  .noteStories .noteStoriesHead > a,
+  .galleryFlow .gallery-more-link {
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:space-between;
+    gap:22px;
+    min-height:48px;
+    width:max-content;
+    padding:14px 18px!important;
+    font-size:15px!important;
+    font-weight:600!important;
+    letter-spacing:.14em!important;
+    line-height:1.3;
+    border:1px solid rgba(255,255,255,.34)!important;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+}
+@media (min-width:721px) and (max-width:1000px) {
+  .playersTeaser { grid-template-columns:minmax(0,1fr) minmax(340px,1fr);column-gap:2vw; }
+  .playersTeaserCopy p { font-size:13px!important;letter-spacing:.03em!important; }
+}
