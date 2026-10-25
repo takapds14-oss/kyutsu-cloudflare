@@ -1,1 +1,2 @@
-KYUTSU SITE VERSION 56 — Cloudflare Pages Functions migration
+KYUTSU SITE VERSION 57
+Cloudflare Pages: nonstop marquee on hover, left-aligned secondary links on desktop; PURPOSE unchanged.
