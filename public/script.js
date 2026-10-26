@@ -1,6 +1,19 @@
-const b=document.querySelector('.menu'),n=document.querySelector('nav');
-if(b)b.onclick=()=>n.classList.toggle('open');
-document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>n.classList.remove('open'));
+const b=document.querySelector('.menu'),n=document.querySelector('#mobileSiteNav');
+function setMobileMenu(open){
+ if(!b||!n)return;
+ n.classList.toggle('open',open);
+ document.body.classList.toggle('mobileMenuOpen',open);
+ b.setAttribute('aria-expanded',String(open));
+ b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+ b.querySelector('span').textContent=open?'×':'☰';
+ b.querySelector('small').textContent=open?'CLOSE':'MENU';
+}
+if(b&&n){
+ b.onclick=()=>setMobileMenu(!n.classList.contains('open'));
+ n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMobileMenu(false)));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setMobileMenu(false)});
+ window.addEventListener('resize',()=>{if(window.innerWidth>720)setMobileMenu(false)});
+}
 const FALLBACK_RESULTS=[
  {date:'2026/09/27',opponent:'SAVERS',score:'2-3',result:'負け'},
  {date:'2026/04/12',opponent:'GDO',score:'1-2',result:'勝ち'},
