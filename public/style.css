@@ -1006,3 +1006,25 @@ html,body{max-width:100%;overflow-x:hidden}
 .homeNewsItemArrow{font-size:23px;font-weight:300}
 .newsEmpty{color:#a8b5c7;font-size:13px;line-height:1.8;padding:24px 0}
 @media(max-width:720px){.homeNews{padding:75px 6vw 85px}.homeNewsHead h2{font-size:52px}.homeNewsHead{align-items:flex-end}.homeNewsMore{padding:12px;font-size:9px}.homeNewsThumb{width:74px;height:66px}.homeNewsItem{gap:12px}.homeNewsTitle{font-size:13px}}
+
+/* Ver.67 / SP overlay: remove blend-mode that let hero images show through */
+@media(max-width:720px){
+  body>header{mix-blend-mode:normal!important;isolation:isolate!important;z-index:9999!important;background:#061326!important}
+  body>header #mobileSiteNav{background-color:#061326!important;opacity:1!important;mix-blend-mode:normal!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;visibility:hidden!important;}
+  body>header #mobileSiteNav.open{visibility:visible!important;display:flex!important;}
+  body.mobileMenuOpen{overflow:hidden!important}
+  .homeNews,.homeNewsHead,.homeNewsItems{box-sizing:border-box!important;max-width:100%!important;min-width:0!important}
+  .homeNews{width:100%!important;position:relative!important;left:auto!important;right:auto!important;transform:none!important;margin:0!important;padding:82px 6vw 96px!important;overflow:hidden!important}
+  .homeNewsHead{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:0!important;margin-bottom:38px!important}
+  .homeNewsHead h2{font-size:12.7vw!important;line-height:.92!important;font-weight:500!important;letter-spacing:-.055em!important}
+  .homeNewsMore{display:inline-flex!important;align-items:center!important;gap:18px!important;color:#eaf0f7!important;
+    text-decoration:none!important;font-size:13px!important;font-weight:500!important;letter-spacing:.08em!important;
+    min-height:48px!important;box-sizing:border-box!important;padding:0 16px!important;margin-top:24px!important;
+    border:1px solid rgba(255,255,255,.25)!important;align-self:flex-start!important}
+  .homeNewsItems{width:100%!important;margin:0!important;padding:0!important}
+}
+/* NEWS consistent section horizontal spacing on desktop */
+@media(min-width:721px){
+ .homeNews{margin:0!important;width:100%!important;box-sizing:border-box!important;padding-left:7vw!important;padding-right:7vw!important}
+ .homeNewsMore{font-size:12px!important;font-weight:500!important}
+}
