@@ -1,3 +1,2 @@
-GitHub repo > public/ に index.html と style.css をアップロードして上書きしてください。
-PC: VIEW ALL NEWS を NEWS 見出しブロック下端に揃える。
-SP: v69 の14vw見出し指定を維持。
+GitHub > kyutsu-cloudflare > public に index.html と style.css の両方を上書きしてください。
+PC: VIEW ALL NEWS を LATEST STORIES と同じ見出し下・左揃えに変更。SP設定は維持。
