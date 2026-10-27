@@ -1126,3 +1126,54 @@ html,body{max-width:100%;overflow-x:hidden}
     border:1px solid rgba(255,255,255,.34)!important;
   }
 }
+
+
+/* v72 NEWS editorial refresh; reuse KYUTSU's navy, rules and sans-serif typography. */
+.newsPage{min-height:100vh;background:#061326;color:#eaf0f7;padding:0 7vw 128px;box-sizing:border-box}
+.newsPage *{box-sizing:border-box}
+.newsPageHeader{padding:172px 0 50px;display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,360px);gap:32px;align-items:end;border-bottom:1px solid rgba(232,238,249,.26);margin-bottom:0}
+.newsPageHeader .eyebrow{font-size:12px!important;letter-spacing:.28em!important;margin:0 0 20px}
+.newsPageHeader h1{font-family:Arial,'Helvetica Neue',sans-serif;font-size:clamp(72px,8.7vw,130px);line-height:.86;font-weight:500;letter-spacing:-.065em;margin:0}
+.newsPageHeaderRight{padding-bottom:4px;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.newsPageHeaderRight p{font-family:Arial,'Helvetica Neue',sans-serif;font-size:14px;line-height:2;color:#bac6d5;margin:0}
+.newsPageIndex{font-size:10px;letter-spacing:.22em;font-weight:700;color:#899db3}
+.newsPage #newsListing{max-width:none;border:0;counter-reset:kyutsuNews}
+.newsPage #newsListing>.newsEmpty{font-size:14px;padding:46px 0}
+.newsPage #newsListing>.homeNewsItem{counter-increment:kyutsuNews;display:grid;grid-template-columns:56px minmax(0,1fr) 42px;align-items:center;column-gap:24px;min-height:135px;padding:27px 0;border-bottom:1px solid rgba(232,238,249,.20);transition:background .2s,padding .2s}
+.newsPage #newsListing>.homeNewsItem:before{content:counter(kyutsuNews,decimal-leading-zero);font-size:12px;letter-spacing:.12em;color:#748aa2;align-self:center}
+.newsPage #newsListing>.homeNewsItem:hover{background:rgba(255,255,255,.045);padding-left:14px;padding-right:14px}
+.newsPage #newsListing>.homeNewsItem .homeNewsThumb{grid-column:2;width:180px;height:110px;object-fit:cover;display:block;margin-bottom:18px}
+.newsPage #newsListing>.homeNewsItem .homeNewsItemBody{grid-column:2;min-width:0}
+.newsPage #newsListing>.homeNewsItem .homeNewsMeta{font-size:11px;letter-spacing:.15em;color:#9eafc2;margin-bottom:13px}
+.newsPage #newsListing>.homeNewsItem .homeNewsTitle{font-family:Arial,'Helvetica Neue',sans-serif;font-size:clamp(18px,2.1vw,29px);font-weight:500;line-height:1.5;letter-spacing:-.025em;margin:0}
+.newsPage #newsListing>.homeNewsItem .homeNewsItemArrow{grid-column:3;grid-row:1 / span 2;justify-self:end;font-size:32px;color:#d8e2f0;transition:transform .2s}
+.newsPage #newsListing>.homeNewsItem:hover .homeNewsItemArrow{transform:translateX(6px)}
+.newsPage #newsDetail{max-width:980px;margin:0 auto;padding-top:165px}
+.newsPage #newsDetail .newsDetailMeta{display:block;color:#a7b7c9;font-size:12px;letter-spacing:.17em;margin:0 0 23px}
+.newsPage #newsDetail h1{font-family:Arial,'Helvetica Neue',sans-serif;font-size:clamp(32px,4.5vw,60px);font-weight:500;line-height:1.35;letter-spacing:-.04em;margin:0;padding:0 0 42px;border-bottom:1px solid rgba(232,238,249,.27);overflow-wrap:anywhere}
+.newsPage #newsDetail .newsDetailBody{max-width:760px;font-size:16px;line-height:2.25;margin:48px 0 90px;white-space:normal;overflow-wrap:anywhere}
+.newsPage #newsDetail .newsDetailImage{width:100%;max-height:570px;object-fit:contain;object-position:left center;margin:44px 0 20px}
+.newsPage #newsDetail .newsBack{display:inline-flex;align-items:center;justify-content:space-between;min-width:218px;padding:17px 19px;border:1px solid rgba(232,238,249,.34);text-decoration:none;color:#eaf0f7;font-size:12px;letter-spacing:.13em;font-weight:600;transition:background .2s}
+.newsPage #newsDetail .newsBack:hover{background:rgba(255,255,255,.09)}
+body.newsStandalone header.newsSiteHeader{background:#061326!important;position:absolute!important;top:0;left:0;right:0;display:flex!important;justify-content:space-between!important;align-items:center!important;padding:28px 7vw!important;height:auto!important;z-index:10}
+.newsSiteHeader .newsReturn{display:inline-flex;gap:12px;align-items:center;color:#eaf0f7;font:600 11px Arial,sans-serif;letter-spacing:.15em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:8px}
+body.newsStandalone .newsPageHeader[hidden],body.newsStandalone #newsListing[hidden],body.newsStandalone #newsDetail[hidden]{display:none!important}
+@media(max-width:720px){
+ .newsPage{padding:0 6vw 95px}
+ body.newsStandalone header.newsSiteHeader{padding:22px 6vw!important}
+ .newsSiteHeader .newsReturn{font-size:9px}
+ .newsPageHeader{grid-template-columns:1fr;gap:24px;padding:137px 0 36px}
+ .newsPageHeader .eyebrow{font-size:10px!important;margin-bottom:20px}
+ .newsPageHeader h1{font-size:clamp(64px,15vw,100px)}
+ .newsPageHeaderRight{gap:14px}
+ .newsPageHeaderRight p{font-size:12px;line-height:1.9}
+ .newsPage #newsListing>.homeNewsItem{grid-template-columns:30px minmax(0,1fr) 22px;column-gap:10px;min-height:115px;padding:23px 0}
+ .newsPage #newsListing>.homeNewsItem:before{font-size:10px}
+ .newsPage #newsListing>.homeNewsItem .homeNewsTitle{font-size:17px;line-height:1.55}
+ .newsPage #newsListing>.homeNewsItem .homeNewsMeta{font-size:9px;line-height:1.7;margin-bottom:8px}
+ .newsPage #newsListing>.homeNewsItem .homeNewsThumb{width:130px;height:82px}
+ .newsPage #newsListing>.homeNewsItem .homeNewsItemArrow{font-size:25px}
+ .newsPage #newsDetail{padding-top:135px}
+ .newsPage #newsDetail h1{font-size:31px;padding-bottom:28px}
+ .newsPage #newsDetail .newsDetailBody{font-size:14px;margin:36px 0 60px}
+}
