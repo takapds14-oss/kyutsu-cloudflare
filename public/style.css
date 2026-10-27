@@ -1087,3 +1087,69 @@ html,body{max-width:100%;overflow-x:hidden}
     letter-spacing:.18em!important;
   }
 }
+
+/* NEWS parity patch / 2026-10-28: mirror LATEST STORIES heading and CTA layout. */
+@media (min-width:721px){
+  .homeNewsHead{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:end!important;
+    justify-content:initial!important;
+    gap:24px!important;
+    margin-bottom:62px!important;
+  }
+  .homeNewsHead > div{min-width:0!important;}
+  .homeNewsHead h2{
+    font-family:Arial,'Helvetica Neue',sans-serif!important;
+    font-size:clamp(64px,9vw,128px)!important;
+    font-weight:500!important;
+    letter-spacing:-.04em!important;
+    line-height:.9!important;
+    margin:24px 0 0!important;
+  }
+  .homeNewsHead > .homeNewsMore{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    align-self:end!important;
+    min-width:210px!important;
+    min-height:0!important;
+    width:auto!important;
+    margin:0!important;
+    padding:17px 19px!important;
+    gap:24px!important;
+    border:1px solid rgba(255,255,255,.28)!important;
+    font:600 10px/normal Arial,'Helvetica Neue',sans-serif!important;
+    letter-spacing:.18em!important;
+  }
+}
+@media (max-width:720px){
+  .homeNewsHead{
+    display:block!important;
+    margin-bottom:46px!important;
+  }
+  .homeNewsHead h2{
+    font-family:Arial,'Helvetica Neue',sans-serif!important;
+    font-size:14vw!important;
+    line-height:.92!important;
+    letter-spacing:-.04em!important;
+    font-weight:500!important;
+    margin:24px 0 0!important;
+  }
+  .homeNewsHead > .homeNewsMore{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    align-self:auto!important;
+    gap:22px!important;
+    min-height:48px!important;
+    min-width:0!important;
+    width:max-content!important;
+    max-width:100%!important;
+    margin-top:28px!important;
+    padding:14px 18px!important;
+    font-size:15px!important;
+    font-weight:600!important;
+    letter-spacing:.18em!important;
+  }
+}
