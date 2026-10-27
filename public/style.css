@@ -1030,13 +1030,12 @@ html,body{max-width:100%;overflow-x:hidden}
 }
 
 
-/* v69: NEWS layout uses one definitive rule-set (no competing overrides).
-   Align CTA with NEWS heading top rather than original bottom baseline. */
+/* v70: Match NOTE Stories heading/action alignment at desktop widths. */
 @media (min-width:721px){
   .homeNewsHead{
     display:grid!important;
     grid-template-columns:minmax(0,1fr) auto!important;
-    align-items:start!important;
+    align-items:end!important;
     column-gap:24px!important;
     margin-bottom:62px!important;
   }
@@ -1049,8 +1048,8 @@ html,body{max-width:100%;overflow-x:hidden}
     margin:24px 0 0!important;
   }
   .homeNewsHead > .homeNewsMore{
-    align-self:start!important;
-    margin-top:57px!important;
+    align-self:end!important;
+    margin-top:0!important;
     display:flex!important;
     justify-content:space-between!important;
     align-items:center!important;
