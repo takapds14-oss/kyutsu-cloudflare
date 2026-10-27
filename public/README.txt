@@ -1,5 +1,3 @@
-KYUTSU NEWS design fix (2026-10-28)
-Upload BOTH files into GitHub repository's public/ directory:
-- index.html (CSS cache-busting URL changed)
-- style.css (NEWS styles match LATEST STORIES PC and SP)
-Do not upload README.txt.
+KYUTSU NEWS 見出し・リンク配置 修正版 v69
+GitHub リポジトリ public/ 内に index.html と style.css をアップロードして上書きしてください。
+前のCSS追記ルールを整理し、PC VIEW ALL NEWS の縦位置を変更、SP見出しをLATEST STORIESと一致させました。
