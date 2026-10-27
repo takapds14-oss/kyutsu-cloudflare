@@ -164,6 +164,16 @@
  .applicationLayout .formGrid{grid-template-columns:minmax(0,1fr);gap:30px}
  .applicationSummary{font-size:12px;line-height:2.05}
 }
+
+/* v70: Keep JOINING FLOW aligned with the other split editorial sections. */
+.recruitFlow .flow{grid-template-columns:minmax(0,1fr);gap:0;margin-top:0}
+.recruitFlow .flowStep{padding:20px 0 24px}
+.recruitFlow .flowStep h3{margin:13px 0 8px;font-size:clamp(22px,2vw,28px)}
+.recruitFlow .flowStep p{max-width:62ch}
+@media(max-width:720px){
+ .recruitFlow .flow{gap:0}
+ .recruitFlow .flowStep{padding:17px 0 22px}
+}
 </style>
 </head>
 <body>
@@ -228,9 +238,11 @@
     </div>
   </section>
 
-  <section class="recruitSection">
-    <p class="eyebrow">HOW TO JOIN</p>
-    <h2>JOINING<br>FLOW.</h2>
+  <section class="recruitSection recruitSplit recruitFlow">
+    <div>
+      <p class="eyebrow">HOW TO JOIN</p>
+      <h2>JOINING<br>FLOW.</h2>
+    </div>
     <div class="flow">
       <article class="flowStep"><span>01 / APPLY</span><h3>応募</h3><p>フォームから、野球歴・ポジション・参加理由などを送ってください。</p></article>
       <article class="flowStep"><span>02 / EXPERIENCE</span><h3>体験参加 2〜3回</h3><p>実際の活動に参加し、野球の雰囲気やチームの考え方をお互いに確認します。</p></article>
