@@ -1,0 +1,44 @@
+/* KYUTSU CONTACT / v1 — standalone extension, no changes to existing components */
+.contact-page{background:#061326;color:#eaf0fa;min-height:100vh;padding:145px 6vw 120px}
+.contact-page *{box-sizing:border-box}
+.contact-page a{color:inherit}
+.contact-kicker{color:#aab8cc;font-size:11px;letter-spacing:.29em;font-weight:650;margin:0 0 22px}
+.contact-hero{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end;padding-bottom:78px;border-bottom:1px solid #354253}
+.contact-title{font:400 clamp(58px,8vw,138px)/.91 Arial,'Helvetica Neue',sans-serif;letter-spacing:-.055em;margin:0}
+.contact-lead{max-width:590px;padding-bottom:5px}
+.contact-lead h2{font:400 clamp(23px,2.6vw,38px)/1.5 Arial,sans-serif;letter-spacing:.02em;margin:0 0 24px}
+.contact-lead p,.contact-text{font-size:14px;line-height:2.2;color:#a5b3c5;letter-spacing:.035em}
+.contact-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:85px 0 100px}
+.contact-option{min-height:315px;display:flex;flex-direction:column;text-decoration:none;border-top:1px solid #627083;padding:25px 12px 28px 0;transition:background .2s}
+.contact-option:hover{background:#101f38}
+.contact-option .no{font-size:10px;letter-spacing:.25em;color:#8295ad}
+.contact-option h3{font:400 clamp(29px,3.15vw,53px)/1.0 Arial,sans-serif;letter-spacing:-.045em;margin:55px 0 13px}
+.contact-option p{font-size:13px;line-height:1.9;color:#a7b5c7;max-width:290px;margin:0}
+.contact-option .arrow{margin-top:auto;padding-top:38px;text-align:right;font-size:26px}
+.contact-divider{border-top:1px solid #354253}
+.contact-body{display:grid;grid-template-columns: .75fr 1.25fr;gap:9vw;padding:90px 0 40px}
+.contact-body h2{font:400 clamp(45px,6vw,92px)/.95 Arial,sans-serif;letter-spacing:-.045em;margin:20px 0}
+.contact-body .aside{max-width:360px;color:#98a8bc;font-size:13px;line-height:2.1}
+.contact-facts{display:grid;grid-template-columns:1fr 1fr;gap:30px 30px;padding:0 0 50px}
+.contact-fact{border-top:1px solid #465369;padding-top:19px}
+.contact-fact small{color:#8fa1b8;font-size:10px;letter-spacing:.17em;display:block;margin-bottom:13px}
+.contact-fact p{margin:0;color:#eaf0fa;font-size:15px;line-height:1.8}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:35px 28px}
+.contact-field{display:flex;flex-direction:column;gap:12px;min-width:0}
+.contact-field.wide,.contact-form .contact-consent,.contact-form .contact-submit{grid-column:1/-1}
+.contact-field label{font-size:10px;letter-spacing:.15em;color:#c6d1df;font-weight:600}
+.contact-field input,.contact-field textarea,.contact-field select{background:transparent;color:#fff;border:0;border-bottom:1px solid #566174;border-radius:0;padding:14px 0;font:inherit;font-size:15px;width:100%;outline:none;color-scheme:dark}
+.contact-field textarea{resize:vertical;min-height:150px;line-height:1.7}
+.contact-field input:focus,.contact-field textarea:focus,.contact-field select:focus{border-color:#e8f0fb}
+.contact-field input::placeholder,.contact-field textarea::placeholder{color:#8593a7}
+.contact-consent{display:flex;gap:12px;color:#a9b6c6;font-size:12px;line-height:1.8;align-items:start}
+.contact-consent input{margin-top:4px}
+.contact-submit{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.contact-submit button{background:#edf1fa;color:#061326;border:1px solid #edf1fa;padding:18px 25px;font:700 11px Arial,sans-serif;letter-spacing:.12em;cursor:pointer}
+.contact-submit button:disabled{opacity:.55;cursor:wait}
+.contact-status{font-size:12px;color:#c3d3e5;line-height:1.8}
+.contact-status.error{color:#ff9a9d}.contact-status.ok{color:#8ef0bb}
+.contact-privacy{color:#7f91a8;font-size:11px;line-height:1.85;padding-top:28px}
+.contact-back{display:inline-block;margin-top:75px;font-size:12px;letter-spacing:.12em;text-underline-offset:6px}
+.contact-hp{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+@media(max-width:800px){.contact-page{padding:100px 6vw 85px}.contact-hero,.contact-body{grid-template-columns:1fr;gap:36px}.contact-title{font-size:clamp(56px,13vw,105px)}.contact-options{grid-template-columns:1fr;padding:55px 0 70px;gap:0}.contact-option{min-height:205px;padding:22px 0;border-top:1px solid #566174}.contact-option h3{margin:30px 0 12px;font-size:clamp(35px,10vw,55px)}.contact-option .arrow{padding-top:10px}.contact-body{padding-top:65px}.contact-facts{grid-template-columns:1fr;gap:20px}.contact-form{grid-template-columns:1fr;gap:26px}.contact-field.wide,.contact-form .contact-consent,.contact-form .contact-submit{grid-column:1}.contact-lead h2{font-size:24px}}
