@@ -5,6 +5,28 @@ const $=s=>document.querySelector(s),e=s=>String(s??'').replace(/[&<>"']/g,c=>({
 const external=(url,label,cls='')=>/^https:\/\//.test(url)?`<a class="${cls}" href="${e(url)}" target="_blank" rel="noopener noreferrer">${e(label)} ↗</a>`:'';
 let current='home';
 $('#nav').innerHTML=Object.entries(pages).map(([id,p])=>`<a href="#${id}" data-page="${id}"><i>${p[1]}</i>${p[0]}</a>`).join('');
+const menuToggle = $('#menu-toggle');
+const menuNav = $('#nav');
+
+function setMenuOpen(open) {
+  menuToggle.setAttribute('aria-expanded', String(open));
+}
+
+menuToggle.addEventListener('click', () => {
+  setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+});
+menuNav.addEventListener('click', event => {
+  if (!event.target.closest('a')) return;
+  if (menuToggle.getAttribute('aria-expanded') === 'true') menuToggle.focus();
+  setMenuOpen(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || menuToggle.getAttribute('aria-expanded') !== 'true') return;
+  setMenuOpen(false);
+  menuToggle.focus();
+});
+window.addEventListener('hashchange', () => setMenuOpen(false));
+
 const roster=DATA.roster,active=roster.filter(r=>r[1]!=='助っ人用'&&!r[3]);
 function title(t,link,label='すべて見る'){return `<div class="sectiontitle"><h2>${t}</h2>${link?`<a href="#${link}">${label} →</a>`:''}</div>`}
 function home(){return `<section class="hero"><div class="eyebrow">OUR STANDARD / 2026</div><h2>勝ち切る型を、つくる。</h2><p>「どう勝つか」を全員で理解し、再現できるチームへ。<br>勝つための準備・戦略・役割を共有し、球通らしさを形にする。</p><a href="#policy">2026行動目標を読む　→</a></section><div class="stats"><a href="#members" class="stat"><label>登録メンバー</label><strong>${active.length}<small>名</small></strong></a><a href="#videos" class="stat"><label>試合アーカイブ</label><strong>${DATA.videos.length}<small>試合</small></strong></a><a href="#rules" class="stat"><label>行動ルール</label><strong>${DATA.rules.length}<small>項目</small></strong></a></div>${title('すぐにアクセス')}<div class="quickgrid">${[['rules','≡','行動ルール','集合・出欠・チームの規律'],['members','♧','メンバー・背番号','名前とポジションを確認'],['videos','▷','試合動画','対戦相手から映像を探す'],['reviews','↗','試合振り返り','GOOD / MOREを共有']].map(x=>`<a href="#${x[0]}" class="quick"><i>${x[1]}</i><span class="arrow">↗</span><h3>${x[2]}</h3><p>${x[3]}</p></a>`).join('')}</div><div class="twocol"><section>${title('まず確認したいこと','rules','ルールへ')}<div class="panel">${DATA.rules.filter(r=>['出欠管理','試合前のスケジュール','teamsへ試合結果個人結果を入力'].includes(r[1])).map(r=>'<details><summary>'+e(r[1])+'</summary><div class="detail">'+e(r[2])+'</div></details>').join('') || '<a href="#rules">行動ルールを確認 →</a>'}${external('https://teams.one/teams/kyutsu/community','teamsを開く','linkbutton')}</div></section><section>${title('試合映像を見返す','videos','一覧へ')}<div class="panel">${DATA.videos.slice().sort((a,b)=>b[1].localeCompare(a[1])).slice(0,3).map(r=>`<a href="#videos" class="lineitem"><span><small>${e(r[1])} / ${e(r[2]||'大会未記入')}</small><br>vs ${e(r[3])}</span><span>▷</span></a>`).join('')}<p class="sub" style="margin-top:15px">試合日が新しい順に表示しています。</p></div></section></div>`}
@@ -16,7 +38,7 @@ function rulesRender(){let q=$('#search').value.trim().toLowerCase(),group=$('#g
 function reviews(){return DATA.reviews.slice().reverse().map(r=>`<article class="panel review"><div class="label">${e(r[1])} / ${e(r[2])}</div><h3>vs ${e(r[3])}</h3><div class="reviewcols"><div><div class="label">GOOD / できたこと</div><p>${e(r[5]||'振り返り未記入')}</p></div><div><div class="label">MORE / 次に向けて</div><p>${e(r[6]||'振り返り未記入')}</p></div></div>${external(r[4],'試合結果を見る','linkbutton')}</article>`).join('')}
 function policy(){return `<div class="goalgrid">${[['品川区2部','優勝','都大会ベスト4進出'],['Victoria 4部','優勝','プロスタ決勝の実現'],['年間勝率','60%','40試合で24勝ライン'],['チーム平均得点','4点','1点を積み重ねる']].map(x=>`<div class="panel"><span class="sub">${x[0]}</span><b>${x[1]}</b><span class="sub">${x[2]}</span></div>`).join('')}</div><details open><summary>2026行動目標の全文<small>チーム方針</small></summary><div class="detail policy">${e(DATA.policy)}</div></details>`}
 function links(){return `<div class="linklist">${DATA.index.map(r=>{let url=r[3].match(/^https:\/\/\S+/)?.[0];let internal={'試合動画ストック':'videos','コーディネーター':'roles','背番号管理':'members'}[r[1]];return `<div class="panel"><div class="label">${e(r[2]||'KYUTSU BC')}</div><h3>${e(r[1])}</h3><p class="sub">${e(r[4]||'')}</p><div style="margin-top:15px">${url?external(url,'開く','linkbutton'):internal?`<a href="#${internal}" class="linkbutton">ページを開く →</a>`:`${'<span class="sub">リンク未登録</span>'}`}</div></div>`}).join('')}</div>`}
-function render(){current=location.hash.slice(1);if(!pages[current])current='home';let p=pages[current];$('#crumb').textContent=p[0];$('#heading').textContent=p[2];$('#intro').textContent=p[3];$('#source').hidden=!CAN_EDIT;document.querySelectorAll('nav a').forEach(a=>{a.classList.toggle('active',a.dataset.page===current);a.toggleAttribute('aria-current',a.dataset.page===current)});let html=current==='home'?home():current==='members'?memberPage():current==='videos'?controls('対戦相手・大会名で検索',[['year','すべての年',[...new Set(DATA.videos.map(r=>r[1].slice(0,4)))].sort().reverse()],['tournament','すべての大会',[...new Set(DATA.videos.map(r=>r[2]).filter(Boolean))]]]):current==='rules'?controls('ルール・キーワードで検索',[['group','すべての区分',[...new Set(DATA.rules.map(r=>r[0]))]]]):current==='playbook'?playbook():current==='reviews'?reviews():current==='policy'?policy():current==='roles'?`<div class="panel"><div class="label">COORDINATOR / 2026</div><h2 style="font-size:20px">コーディネーターの定義</h2><p class="policy">${e(DATA.roles)}</p><p class="sub" style="margin-top:20px">各部門の担当は「2026行動目標」の記載を確認してください。</p><a href="#policy" class="linkbutton" style="margin-top:15px">2026行動目標を読む →</a></div>`:links();$('#content').innerHTML=html;let fn={members:membersRender,videos:videosRender,rules:rulesRender}[current];if(fn){$('#content').querySelectorAll('input,select').forEach(i=>i.addEventListener('input',fn));fn()}window.scrollTo(0,0)}
+function render(){current=location.hash.slice(1);if(!pages[current])current='home';let p=pages[current];$('#crumb').textContent=p[0];$('#heading').textContent=p[2];$('#intro').textContent=p[3];$('#source').hidden=!CAN_EDIT;document.querySelectorAll('nav a').forEach(a=>{a.classList.toggle('active',a.dataset.page===current);a.dataset.page===current ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current')});let html=current==='home'?home():current==='members'?memberPage():current==='videos'?controls('対戦相手・大会名で検索',[['year','すべての年',[...new Set(DATA.videos.map(r=>r[1].slice(0,4)))].sort().reverse()],['tournament','すべての大会',[...new Set(DATA.videos.map(r=>r[2]).filter(Boolean))]]]):current==='rules'?controls('ルール・キーワードで検索',[['group','すべての区分',[...new Set(DATA.rules.map(r=>r[0]))]]]):current==='playbook'?playbook():current==='reviews'?reviews():current==='policy'?policy():current==='roles'?`<div class="panel"><div class="label">COORDINATOR / 2026</div><h2 style="font-size:20px">コーディネーターの定義</h2><p class="policy">${e(DATA.roles)}</p><p class="sub" style="margin-top:20px">各部門の担当は「2026行動目標」の記載を確認してください。</p><a href="#policy" class="linkbutton" style="margin-top:15px">2026行動目標を読む →</a></div>`:links();$('#content').innerHTML=html;let fn={members:membersRender,videos:videosRender,rules:rulesRender}[current];if(fn){$('#content').querySelectorAll('input,select').forEach(i=>i.addEventListener('input',fn));fn()}window.scrollTo(0,0)}
 addEventListener('hashchange',render);render();
 
 function playbook() {

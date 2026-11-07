@@ -21,3 +21,25 @@
 .playbook-head h2{font-size:27px;letter-spacing:3px;margin:4px 0}
 .playbook-body{line-height:1.9;max-width:760px}
 @media(max-width:700px){.brand{flex-direction:row;justify-content:flex-start;gap:12px}.brand img{width:45px;height:45px}.brand span{font-size:10px;margin:0}.playbook-head{padding:16px;gap:14px}.playbook-head img{width:65px;height:65px}.playbook-head h2{font-size:22px}}
+
+#menu-toggle { display:none; }
+@media (max-width:700px) {
+  .handbook-sidebar { padding-bottom:10px; }
+  .handbook-brand-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .handbook-brand-row .brand span { white-space:normal; }
+  #menu-toggle {
+    display:inline-flex; align-items:center; gap:6px; flex-shrink:0;
+    min-height:44px; padding:0 12px; color:white;
+    background:#26354c; border:1px solid #66768e; border-radius:5px;
+  }
+  .handbook-sidebar #nav { display:none; }
+  .handbook-sidebar:has(#menu-toggle[aria-expanded="true"]) #nav {
+    display:grid; gap:2px; max-height:55dvh; overflow-y:auto;
+    padding-top:5px; border-top:1px solid #44516a;
+  }
+  .handbook-sidebar #nav a { min-height:44px; font-size:13px; }
+  .handbook-sidebar #nav a i { display:inline; }
+  .handbook-sidebar #nav a.active {
+    background:#26354c; border-bottom:0; border-left:2px solid #c8ab72;
+  }
+}
