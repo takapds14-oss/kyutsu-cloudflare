@@ -1177,3 +1177,71 @@ body.newsStandalone .newsPageHeader[hidden],body.newsStandalone #newsListing[hid
  .newsPage #newsDetail h1{font-size:31px;padding-bottom:28px}
  .newsPage #newsDetail .newsDetailBody{font-size:14px;margin:36px 0 60px}
 }
+
+
+/* v73: Consistent Japanese list CTAs across home-page sections.
+   Shared class added directly to each link rather than relying on unrelated component selectors. */
+.homeNews a.kyutsuSectionAction,
+.resultsSection .sectionIntro a.kyutsuSectionAction,
+.playersTeaser a.kyutsuSectionAction,
+.noteStories .noteStoriesHead a.kyutsuSectionAction,
+.galleryFlow a.kyutsuSectionAction {
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  flex:0 0 auto!important;
+  gap:20px!important;
+  box-sizing:border-box!important;
+  width:230px!important;
+  min-width:0!important;
+  max-width:100%!important;
+  min-height:50px!important;
+  height:auto!important;
+  margin-left:0!important;
+  padding:12px 18px!important;
+  border:1px solid rgba(232,238,249,.34)!important;
+  border-radius:0!important;
+  background:rgba(255,255,255,.025)!important;
+  color:#eaf0f7!important;
+  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif!important;
+  font-size:14px!important;
+  font-weight:600!important;
+  letter-spacing:.08em!important;
+  line-height:1.35!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+  transition:background .2s ease,border-color .2s ease,color .2s ease!important;
+}
+.homeNews a.kyutsuSectionAction span,
+.resultsSection .sectionIntro a.kyutsuSectionAction span,
+.playersTeaser a.kyutsuSectionAction span,
+.noteStories .noteStoriesHead a.kyutsuSectionAction span,
+.galleryFlow a.kyutsuSectionAction span {
+  flex:0 0 auto!important;
+  margin-left:auto!important;
+  font:400 19px/1 Arial,sans-serif!important;
+  letter-spacing:0!important;
+}
+.homeNews a.kyutsuSectionAction:hover,
+.resultsSection .sectionIntro a.kyutsuSectionAction:hover,
+.playersTeaser a.kyutsuSectionAction:hover,
+.noteStories .noteStoriesHead a.kyutsuSectionAction:hover,
+.galleryFlow a.kyutsuSectionAction:hover {
+  background:#eaf0f7!important;
+  color:#061326!important;
+  border-color:#eaf0f7!important;
+}
+@media(max-width:720px){
+  .homeNews a.kyutsuSectionAction,
+  .resultsSection .sectionIntro a.kyutsuSectionAction,
+  .playersTeaser a.kyutsuSectionAction,
+  .noteStories .noteStoriesHead a.kyutsuSectionAction,
+  .galleryFlow a.kyutsuSectionAction {
+    width:230px!important;
+    max-width:min(230px,100%)!important;
+    min-height:50px!important;
+    padding:12px 17px!important;
+    font-size:14px!important;
+    margin-right:0!important;
+  }
+}
